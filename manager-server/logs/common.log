@@ -1,0 +1,12 @@
+[2023-11-15T22:23:01.300] [DEBUG] default - debug some message
+[2023-11-15T22:23:01.307] [INFO] info - debug info message
+[2023-11-15T22:23:38.499] [DEBUG] default - debug some message
+[2023-11-15T22:23:38.506] [INFO] info - debug info message
+[2023-11-15T22:23:40.898] [DEBUG] default - debug some message
+[2023-11-15T22:23:40.905] [INFO] info - debug info message
+[2023-11-15T22:23:41.082] [DEBUG] default - debug some message
+[2023-11-15T22:23:41.087] [INFO] info - debug info message
+[2023-11-15T22:23:41.288] [DEBUG] default - debug some message
+[2023-11-15T22:23:41.295] [INFO] info - debug info message
+[2023-11-15T22:26:00.262] [DEBUG] default - debug some message
+[2023-11-15T22:26:00.685] [INFO] info - debug info message
