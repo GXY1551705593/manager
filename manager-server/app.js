@@ -8,6 +8,7 @@ const logger = require('koa-logger')
 const log4js = require('./utils/log4.js')
 const index = require('./routes/index')
 const users = require('./routes/users')
+require('./config/db.js')
 
 // error handler
 onerror(app)
@@ -28,7 +29,7 @@ app.use(views(__dirname + '/views', {
 app.use(async (ctx, next) => {
   log4js.debug('debug some message');
   await next()
-  log4js.info('debug info message');
+  log4js.info('debug info message',ctx);
 })
 
 // routes

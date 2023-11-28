@@ -1,2 +1,3 @@
 /manager-server/node_modules/
 .idea
+/manager-server/logs/

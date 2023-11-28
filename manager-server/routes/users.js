@@ -1,13 +1,10 @@
-const router = require('koa-router')()
+const router = require('koa-router')();
+const user = require("../models/userSchema.js");
+const log4js = require("../utils/log4.js")
+router.prefix('/users');
 
-router.prefix('/users')
-
-router.get('/', function (ctx, next) {
-  ctx.body = 'this is a users response!'
-})
-
-router.get('/bar', function (ctx, next) {
-  ctx.body = 'this is a users/bar response'
+router.get("/login",async function(ctx,next){
+  log4js.info(ctx.request)
 })
 
 module.exports = router
