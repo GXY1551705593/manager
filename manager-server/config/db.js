@@ -10,5 +10,5 @@ async function main () {
 main().then(res=>{
     log4js.info('****数据库连接成功*****',res)
 }).catch(err=>{
-    log4js.error(err)
+    log4js.error('****数据库连接失败*****',err)
 })

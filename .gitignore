@@ -1,3 +1,4 @@
 /manager-server/node_modules/
 .idea
 /manager-server/logs/
+/manager-server/routes/logs/*.log

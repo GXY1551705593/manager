@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const userSchema = mongoose.Schema({
     userId: Number,
     userName: String,
+    password: String,
     state: {
         type: Number,
         default: 1 , // 1 在职  2  离职   3 试用期
