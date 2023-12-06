@@ -6,10 +6,7 @@ const articleSchema = mongoose.Schema({
     content: String,
     title: String,
     createTime: Date,
-    userName: {
-        type:Schema.Types.ObjectId,
-        ref:"User"
-    }
+    authorId: String
 })
 
 module.exports = mongoose.model("Article",articleSchema,'articles')

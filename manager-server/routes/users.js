@@ -4,7 +4,7 @@ router.prefix('/users');
 
 // 注册接口
 router.post("/register",async function (ctx,next){
-  const {name,password,confirmPsd} = ctx.request.body;
+  const {name,password,confirmPsd,userId} = ctx.request.body;
   // 校验密码输入是否一致
   if (password !== confirmPsd){
     ctx.response.body = '密码输入不一致';
@@ -19,7 +19,7 @@ router.post("/register",async function (ctx,next){
   }
 
   // 注册新用户
-  await User.create({userName:name, password});
+  await User.create({userName:name,password,userId});
   ctx.response.body = '注册成功';
 })
 
