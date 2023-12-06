@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const {Schema} = require("mongoose");
+
 const userSchema = mongoose.Schema({
     userId: Number,
     userName: String,
@@ -23,6 +25,10 @@ const userSchema = mongoose.Schema({
     lastLoginTime: {
         type: Date,
         default: new Date()
+    },
+    articles:{
+        type:Schema.Types.ObjectId,
+        ref:"Article"
     }
 })
 

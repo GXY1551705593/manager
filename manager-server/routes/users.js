@@ -1,6 +1,5 @@
 const router = require('koa-router')();
 const User = require("../models/userSchema.js");
-const log4js = require("../utils/log4.js")
 router.prefix('/users');
 
 // 注册接口
