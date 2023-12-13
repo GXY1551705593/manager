@@ -2,3 +2,4 @@
 .idea
 /manager-server/logs/
 /manager-server/routes/logs/*.log
+/manager-vue-front/node_modules/
