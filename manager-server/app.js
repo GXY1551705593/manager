@@ -10,6 +10,9 @@ const index = require('./routes/index')
 const users = require('./routes/users')
 const articles = require("./routes/article")
 require('./config/db.js')
+const cors = require('koa-cors');
+
+app.use(cors());  // 允许所有源进行跨域请求
 
 // error handler
 onerror(app)
@@ -26,13 +29,6 @@ app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
 
-// logger
-app.use(async (ctx, next) => {
-  log4js.debug('debug some message');
-  await next()
-  log4js.info('debug info message',ctx);
-})
-
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
@@ -40,8 +36,11 @@ app.use(articles.routes(), articles.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
-  console.error('server error', err, ctx)
   log4js.error(err)
 });
+
+app.listen(8888,()=>{
+  console.log('端口 8888 启动中')
+})
 
 module.exports = app
