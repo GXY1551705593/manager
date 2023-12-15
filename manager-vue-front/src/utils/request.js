@@ -26,7 +26,7 @@ http.interceptors.request(
 http.interceptors.response(
     response => {
         /* 请求之后拦截器 */
-        switch (response.statusCode) {
+        switch (response.status) {
             case 200:
                 return response.data;
             case 400:
