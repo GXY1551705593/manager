@@ -1,37 +1,43 @@
 const router = require('koa-router')();
 const User = require("../models/userSchema.js");
-router.prefix('/users');
+router.prefix('/user');
+const {getSuccessRes,getErrorRes} = require("../utils/response.js");
 
 // 注册接口
-router.post("/register",async function (ctx,next){
-  const {name,password,confirmPsd,userId} = ctx.request.body;
+router.post("/register",async function (ctx){
+  const {userName,password,confirmPsd,userId} = ctx.request.body;
   // 校验密码输入是否一致
   if (password !== confirmPsd){
-    ctx.response.body = '密码输入不一致';
+    ctx.response.body = getSuccessRes(null,'密码输入不一致');
     return
   }
 
   // 检验是否是已有账号
   const findOneRes = await User.findOne({userName:name});
   if(findOneRes){
-    ctx.response.body = '用户已存在，请更改用户名';
+    ctx.response.body = getSuccessRes(null,'注册账号已存在');
     return
   }
 
   // 注册新用户
-  await User.create({userName:name,password,userId});
-  ctx.response.body = '注册成功';
+  await User.create({userName,password,userId});
+  ctx.response.body = getSuccessRes(null,'注册成功');
 })
 
 // 登录接口
-router.get("/login",async function(ctx,next){
-  const {userName,password} = ctx.request.query;
-  const findOneData = User.findOne({userName,password})
+router.get("/login",async function(ctx){
+  const {userId,password} = ctx.request.query;
+  const findOneData = await User.findOne({userId,password});
   if (findOneData) {
-    ctx.response.body = {
-      status: 200,
-      msg: '登录成功'
+    const data = {
+      userId: findOneData.userId,
+      createTime: findOneData.createTime,
+      userName: findOneData.userName,
+      lastLoginTime: new Date()
     }
+    ctx.response.body = getSuccessRes(data,'登录成功');
+  } else {
+    ctx.response.body = getErrorRes(null,'登录失败');
   }
 })
 

@@ -1,4 +1,6 @@
-<!-- 日报页面 -->
+<!-- 添加日报页面 -->
+<!-- @author: 桂新洋 -->
+<!-- @date: 2023-12-12 -->
 <script setup>
 import {addArticle} from "@/api/article.js";
 import {ref} from "vue";
@@ -36,10 +38,6 @@ function handleAddArticle () {
             <div class="label">标题：</div>
             <el-input v-model="title"/>
         </div>
-        <div class="form-item">
-            <div class="label">作者Id：</div>
-            <el-input v-model="authorId"/>
-        </div>
         日报内容：
         <v-md-editor mode="edit" v-model="content"></v-md-editor>
         <el-button class="add-btn" @click="handleAddArticle" type="primary" plain>添加</el-button>
@@ -49,6 +47,8 @@ function handleAddArticle () {
 <style  scoped lang="scss">
 .container {
     text-align: left;
+    width: 800px;
+    margin: 20px auto;
     position: relative;
     .form-item {
         display: flex;
@@ -60,13 +60,12 @@ function handleAddArticle () {
     }
     .add-btn {
         position: absolute;
-        top: 0px;
+        top: 0;
         right: -100px;
     }
-}
-
-.v-md-editor {
-    width: 1000px;
-    height: 600px;
+    .v-md-editor {
+        width: 100%;
+        height: 600px;
+    }
 }
 </style>

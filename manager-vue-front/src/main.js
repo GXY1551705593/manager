@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import './style.css';
+import './style.scss'
 import App from './App.vue';
 import router from './router'
 import VMdEditor from '@kangc/v-md-editor';
@@ -11,9 +11,13 @@ import 'element-plus/dist/index.css';
 import hljs from 'highlight.js';
 
 VMdEditor.use(githubTheme, {
-    Hljs: hljs,
-    mode: 'edit'
+    Hljs: hljs
 });
+
+router.beforeEach((to, from, next)=>{
+    document.title = to.meta.title
+    next()
+})
 
 const app = createApp(App);
 app.use(router).use(ElementPlus).use(VMdEditor).mount('#app');
