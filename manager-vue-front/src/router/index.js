@@ -2,6 +2,10 @@ import {createRouter,createWebHashHistory} from "vue-router";
 
 const routes = [
     {
+        path: '/',
+        redirect: '/login'
+    },
+    {
         path:'/add-article',
         name:'addArticle',
         meta: {title: '添加日报'},

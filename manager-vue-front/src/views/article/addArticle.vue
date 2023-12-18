@@ -8,22 +8,18 @@ import { ElMessage } from 'element-plus'
 
 let title = ref('');
 let content = ref('');
-let authorId = ref('');
 
 function handleAddArticle () {
+    const {userId} = JSON.parse(sessionStorage.getItem('userInfo'));
     if (!title.value){
         ElMessage.error("请填入标题")
-        return
-    }
-    if (!authorId.value){
-        ElMessage.error("请填入作者Id")
         return
     }
     if (!content.value){
         ElMessage.error("请填入日报内容")
         return
     }
-    const data = {content: content.value, title: title.value, authorId: authorId.value};
+    const data = {content: content.value, title: title.value, authorId: userId};
     addArticle(data).then(res => {
         if (res.statusCode === 200){
             ElMessage.success(res.msg);
