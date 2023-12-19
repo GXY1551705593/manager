@@ -1,15 +1,11 @@
 import {createRouter,createWebHashHistory} from "vue-router";
+import articleRoutes from "@/router/article.js";
 
 const routes = [
+    ...articleRoutes,
     {
         path: '/',
         redirect: '/login'
-    },
-    {
-        path:'/add-article',
-        name:'addArticle',
-        meta: {title: '添加日报'},
-        component: () => import('../views/article/addArticle.vue')
     },
     {
         path: "/login",
@@ -31,5 +27,4 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes
 })
-
 export default router
